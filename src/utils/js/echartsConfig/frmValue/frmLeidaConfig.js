@@ -106,6 +106,10 @@ export function setLeidaConfig(address,rfmTag,time) {
                                     shadowBlur: 10,
                                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                                 }
+                            },
+                            markLine: {
+                                silent:true,
+                                data: [{ type: 'average', name: 'Avg' }]
                             }
                         }
                     ]

@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-06-06 16:46:44
+ * @LastEditTime: 2023-08-07 19:15:23
  * @FilePath: \vue-web\src\utils\js\echartsConfig\frmValue\frmThreeConfig.js
  * @Description: 
  * 
@@ -93,7 +93,11 @@ export function setfrmThreeConfig(address, rfmTag, time) {
                     symbolSize: function (value) {
                         return value[2]/3
                     },
-                    data:datas
+                    data:datas,
+                    markLine: {
+                        silent:true,
+                        data: [{ type: 'average', name: 'Avg' }]
+                    }
                 }]
             };
             resolve(option)

@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-04 16:27:50
+ * @LastEditTime: 2023-08-07 20:09:56
  * @FilePath: \vue-web\src\views\picture\groupPic.vue
  * @Description: 
  * 
@@ -30,7 +30,7 @@
                 :value="rfm"
                 style="margin-bottom: 15px"
               />
-            </el-form-item>
+            </el-form-item> 
             <el-form-item label="用户群体营销策略">
               <el-button
                 text

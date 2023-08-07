@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-07-02 18:57:07
+ * @LastEditTime: 2023-08-07 20:11:41
  * @FilePath: \vue-web\src\views\userValueViews\rfmModule.vue
  * @Description: 
  * 
@@ -38,7 +38,11 @@
                 <el-col :span="24">
                     <rfmLeida height="500px" ref="rfmLeidaRef"></rfmLeida>
                 </el-col>
-                
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <rfmSlider height="500px" ref="rfmSliderRef"></rfmSlider>
+                </el-col>
             </el-row>
             <el-row>
                 <el-col :span="24">
@@ -66,6 +70,7 @@ const rfmThreeRef = ref()
 const compareRef = ref()
 const rfmLeidaRef = ref()
 const timeDisabled = ref(true)
+const rfmSliderRef = ref()
 const time = ref('1')
 const timeChange = (val)=>{
     timeBind = val
@@ -74,6 +79,7 @@ const timeChange = (val)=>{
     rfmTotalRef.value.chartDraw(addressBind,val)
     compareRef.value.chartDraw(addressBind,val)
     rfmLeidaRef.value.chartDraw(addressBind,val)
+    rfmSliderRef.value.chartDraw(addressBind,val)
 }
 
 // 地图加载完成
@@ -111,6 +117,7 @@ const mapChange = (address,level)=>{
     rfmTotalRef.value.chartDraw(address,timeBind)
     compareRef.value.chartDraw(address,timeBind)
     rfmLeidaRef.value.chartDraw(address,timeBind)
+    rfmSliderRef.value.chartDraw(address,timeBind)
 }
 
 onMounted(()=>{

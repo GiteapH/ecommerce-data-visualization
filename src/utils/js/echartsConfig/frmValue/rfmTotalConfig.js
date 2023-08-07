@@ -68,7 +68,11 @@ export function setfrmTotalConfig(address, time) {
                     name: info,
                     type: 'scatter',
                     itemStyle: itemStyle,
-                    data: []
+                    data: [],
+                    markLine: {
+                        silent:true,
+                        data: [{ type: 'average', name: 'Avg' }]
+                    }
                 }
                 let limit = 80
                 for (let { userId, consumptionCapacityNum, frequencyNum, recencyNum, consumptionCapacity, frequency, recency } of data[info]) {
