@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-07-29 14:23:24
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-03 15:28:53
+ * @LastEditTime: 2023-08-09 17:52:34
  * @FilePath: \vue-web\src\components\echarts\analysis\userAnalysis.vue
  * @Description: 
  * 
@@ -28,11 +28,7 @@
         </el-col>
         <el-col :span="5">
           <p>请选择生成方案数量</p>
-          <el-select
-            v-model="num"
-            placeholder="请选择生成方案数量"
-            @change="numChange"
-          >
+          <el-select v-model="num" placeholder="请选择生成方案数量" @change="numChange">
             <el-option label="1种" value="1"></el-option>
             <el-option label="2种" value="2"></el-option>
             <el-option label="3种" value="3"></el-option>
@@ -43,23 +39,11 @@
       </el-row>
       <div style="margin-top: 30px">
         <div class="analysis">
-          <el-timeline
-            style="height: 500px; overflow: scroll; padding-right: 15px"
-          >
-            <el-timeline-item
-              :timestamp="'方案  ' + (index + 1)"
-              :key="index"
-              placement="top"
-              :color="`${colors[index]}`"
-              hollow
-              v-for="(item, index) in analysis"
-            >
-              <el-card
-                v-loading="loading"
-                :element-loading-text="`正在生成方案${index+1}中...`"
-                :style="{ 'border-right': `solid 14px ${colors[index]}` }"
-                shadow="hover"
-              >
+          <el-timeline style="height: 500px; overflow: scroll; padding-right: 15px">
+            <el-timeline-item :timestamp="'方案  ' + (index + 1)" :key="index" placement="top" :color="`${colors[index]}`"
+              hollow v-for="(item, index) in analysis">
+              <el-card v-loading="loading" :element-loading-text="`正在生成方案${index + 1}中...`"
+                :style="{ 'border-right': `solid 14px ${colors[index]}` }" shadow="hover">
                 <el-form :inline="true">
                   <el-form-item label="措施">
                     <p>{{ item.name }}</p>
@@ -85,40 +69,23 @@
           <div>
             <div>
               <p>未采取策略用户交易周期</p>
-              <el-date-picker
-                @calendar-change="beforeChange"
-                v-model="before"
-                type="daterange"
-                range-separator="到"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期"
-                :default-value="[new Date(2018, 1, 15), new Date(2018, 2, 15)]"
-              />
+              <el-date-picker @calendar-change="beforeChange" v-model="before" type="daterange" range-separator="到"
+                start-placeholder="开始日期" end-placeholder="结束日期"
+                :default-value="[new Date(2018, 1, 15), new Date(2018, 2, 15)]" />
             </div>
           </div>
           <div>
             <div>
               <p>采取策略后用户交易周期</p>
-              <el-date-picker
-                @calendar-change="afterChange"
-                v-model="after"
-                type="daterange"
-                range-separator="到"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期"
-                :default-value="[new Date(2018, 2, 15), new Date(2018, 3, 15)]"
-              />
+              <el-date-picker @calendar-change="afterChange" v-model="after" type="daterange" range-separator="到"
+                start-placeholder="开始日期" end-placeholder="结束日期"
+                :default-value="[new Date(2018, 2, 15), new Date(2018, 3, 15)]" />
             </div>
           </div>
           <div>
             <div>
               <p>需要对比的数据</p>
-              <el-select
-                v-model="type"
-                placeholder="需要对比的数据"
-                style="margin-top: -5px"
-                @change="typeChange"
-              >
+              <el-select v-model="type" placeholder="需要对比的数据" style="margin-top: -5px" @change="typeChange">
                 <el-option label="浏览次数" value="view"></el-option>
                 <el-option label="下单次数" value="buy"></el-option>
                 <el-option label="关注次数" value="fan"></el-option>
@@ -127,34 +94,34 @@
                 <el-option label="咨询客服次数" value="consult"></el-option>
                 <el-option label="投诉次数" value="conplain"></el-option>
                 <el-option label="每日交易额" value="buyLine"></el-option>
-                <el-option
-                  label="每日距离下次交易间隔"
-                  value="interval"
-                ></el-option>
+                <el-option label="每日距离下次交易间隔" value="interval"></el-option>
                 <el-option label="平均消费信息" value="avg"></el-option>
                 <el-option label="消费信息统计" value="group"></el-option>
+                <el-option label="转化率变化" value="conversion"></el-option>
               </el-select>
             </div>
           </div>
         </div>
       </div>
       <div v-if="type == 'group'" style="margin-top: 25px">
-        <group-list
-          :group_before="group_before"
-          :group_after="group_after"
-        ></group-list>
+        <group-list :group_before="group_before" :group_after="group_after"></group-list>
       </div>
       <div v-else-if="type == 'avg'" style="margin-top: 25px">
-        <avg-card
-          :before_after="before_after"
-          :before_after_diff="before_after_diff"
-        ></avg-card>
+        <avg-card :before_after="before_after" :before_after_diff="before_after_diff"></avg-card>
       </div>
-      <div
-        id="any"
-        style="height: 450px; width: 1000px; margin: 0 auto; margin-top: 25px"
-        v-else
-      ></div>
+      <div v-else-if="type == 'conversion'" style="margin-top: 25px">
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <span style="font-weight:500;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:larger;border-bottom:solid 3px #7df79b">采取前</span>
+            <loudou :date="before" :user="user" :id="'before'"></loudou>
+          </el-col>
+          <el-col :span="12">
+            <span style="font-weight:500;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:larger;border-bottom:solid 3px #125623">采取后</span>
+            <loudou :date="after" :user="user" :id="'after'"></loudou>
+          </el-col>
+        </el-row>
+      </div>
+      <div id="any" style="height: 450px; width: 1000px; margin: 0 auto; margin-top: 25px" v-else></div>
     </div>
   </div>
 </template>
@@ -165,6 +132,7 @@
 import * as echarts from "echarts";
 import { setAnalysisConfig } from "./config.js";
 import { chat, analysisUser } from "@/utils/js/gpt.js";
+import loudou from './loudou'
 import {
   onMounted,
   ref,
@@ -179,23 +147,23 @@ const props = defineProps({
     type: Number,
     default: 1,
   },
-  forecast:{
-    type:Object,
-    default:{
+  forecast: {
+    type: Object,
+    default: {
       Price: {
-          "prediction": 0,
+        "prediction": 0,
       },
       Loss: {
-          "prediction": 0,
+        "prediction": 0,
       },
       Back: {
-          "time_window": 1,
-          "gender": 1,
-          "rfm_tag": 1,
-          "prediction": 0,
-          "cityVec": 1,
-          "provinceVec": 1,
-          "show": false,
+        "time_window": 1,
+        "gender": 1,
+        "rfm_tag": 1,
+        "prediction": 0,
+        "cityVec": 1,
+        "provinceVec": 1,
+        "show": false,
       }
     }
   },
@@ -290,7 +258,7 @@ const analysis = ref([
 const type = ref("view");
 
 const numChange = () => {
-  chat(props.forecast,props.cardInfo,props.ruleInfo,props.userInfo, analysis, loading, num.value);
+  chat(props.forecast, props.cardInfo, props.ruleInfo, props.userInfo, analysis, loading, num.value);
 };
 const typeChange = (val) => {
   chartDraw(val, false, props.user);
@@ -309,7 +277,7 @@ const afterChange = (val) => {
 
 const chartDraw = (type, update, user = 1) => {
   nextTick(() => {
-    if (type != "avg" && type != "group") {
+    if (type != "avg" && type != "group" && type != "conversion") {
       let chartDom = document.getElementById("any");
       var myChart = echarts.init(chartDom);
       proxy.$showLoading(myChart);
@@ -327,7 +295,7 @@ const chartDraw = (type, update, user = 1) => {
       update,
       type
     ).then((res) => {
-      if (type != "avg" && type != "group") {
+      if (type != "avg" && type != "group"  && type != "conversion") {
         myChart.hideLoading();
         myChart.setOption(res);
       }
@@ -336,9 +304,9 @@ const chartDraw = (type, update, user = 1) => {
 };
 
 onMounted(() => {
-  chat(props.forecast,props.cardInfo,props.ruleInfo,props.userInfo, analysis, loading, num.value);
+  chat(props.forecast, props.cardInfo, props.ruleInfo, props.userInfo, analysis, loading, num.value);
   chartDraw("view", true, 1);
-  analysisUser(props.forecast,props.cardInfo,props.ruleInfo,props.userInfo,userAnalysis, userAnalysisLoading);
+  analysisUser(props.forecast, props.cardInfo, props.ruleInfo, props.userInfo, userAnalysis, userAnalysisLoading);
 });
 
 

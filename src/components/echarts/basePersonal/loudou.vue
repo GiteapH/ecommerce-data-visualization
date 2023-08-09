@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-06-28 20:27:15
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-06-29 16:16:08
+ * @LastEditTime: 2023-08-09 17:39:53
  * @FilePath: \vue-web\src\components\echarts\basePersonal\loudou.vue
  * @Description: 
  * 
@@ -67,8 +67,5 @@ defineExpose({
 </script>
 
 <style scoped>
-#loudou {
-    width: 400px;
-    height: 400px;
-}
+
 </style>

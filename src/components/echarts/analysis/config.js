@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-06-14 11:27:39
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-03 11:49:44
+ * @LastEditTime: 2023-08-09 16:42:52
  * @FilePath: \vue-web\src\utils\js\echartsConfig\basePersonal\timePeriedConfig.js
  * @Description: 
  * 

@@ -57,8 +57,5 @@ defineExpose({
 </script>
 
 <style scoped>
-#loudou {
-    width: 400px;
-    height: 400px;
-}
+
 </style>
