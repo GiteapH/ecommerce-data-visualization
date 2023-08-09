@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-03 17:29:03
+ * @LastEditTime: 2023-08-08 17:47:55
  * @FilePath: \vue-web\src\components\echarts\picGroup\clvInfoCards.vue
  * @Description: 
  * 

@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-06-14 11:27:39
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-06-28 15:51:53
+ * @LastEditTime: 2023-08-08 16:59:24
  * @FilePath: \vue-web\src\utils\js\echartsConfig\picGroup\ageRingConfig.js
  * @Description: 
  * 
@@ -60,52 +60,55 @@ export function setAgeRingConfig(address, model, group) {
             })
         }))
         Promise.all(proc).then(res=>{
-            resolve( {
-                tooltip: {
-                    trigger: 'item',
-                        formatter: '{a} <br/>{b} : {c} ({d}%)'
-                },
-                legend: {
-                    top: '',
-                        left: '-5'
-                },
-                series: [
-                    {
-                        name: '年龄人群分布',
-                        type: 'pie',
-                        radius: [15, 70],
-                        center: ['25%', '50%'],
-                        avoidLabelOverlap: false,
-                        top: '15%',
-                        label: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            label: {
-                                show: true,
-                                fontSize: 10,
-                                fontWeight: 'bold'
-                            }
-                        },
-                        labelLine: {
-                            show: false
-                        },
-                        data: datas.age
+            resolve({
+                option:{
+                    tooltip: {
+                        trigger: 'item',
+                            formatter: '{a} <br/>{b} : {c} ({d}%)'
                     },
-                    {
-                        name: '性别分布',
-                        type: 'pie',
-                        top: '15%',
-                        radius: [15, 70],
-                        center: ['75%', '50%'],
-                        roseType: 'area',
-                        itemStyle: {
-                            borderRadius: 5
+                    legend: {
+                        top: '',
+                            left: '-5'
+                    },
+                    series: [
+                        {
+                            name: '年龄人群分布',
+                            type: 'pie',
+                            radius: [15, 70],
+                            center: ['25%', '50%'],
+                            avoidLabelOverlap: false,
+                            top: '15%',
+                            label: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true,
+                                    fontSize: 10,
+                                    fontWeight: 'bold'
+                                }
+                            },
+                            labelLine: {
+                                show: false
+                            },
+                            data: datas.age
                         },
-                        data: datas.gender
-                    }
-                ]
+                        {
+                            name: '性别分布',
+                            type: 'pie',
+                            top: '15%',
+                            radius: [15, 70],
+                            center: ['75%', '50%'],
+                            roseType: 'area',
+                            itemStyle: {
+                                borderRadius: 5
+                            },
+                            data: datas.gender
+                        }
+                    ]
+                },
+                data:datas
             })
         })
     })
