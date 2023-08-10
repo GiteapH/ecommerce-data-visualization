@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-07-29 14:23:24
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-09 17:52:34
+ * @LastEditTime: 2023-08-10 11:04:56
  * @FilePath: \vue-web\src\components\echarts\analysis\userAnalysis.vue
  * @Description: 
  * 
@@ -243,22 +243,31 @@ const num = ref("2");
 const loading = ref(true);
 const userAnalysisLoading = ref(true);
 const userAnalysis = ref("");
-const analysis = ref([
-  {
-    title: "",
-    detail: "",
-    result: "",
-  },
-  {
-    title: "",
-    detail: "",
-    result: "",
-  },
-]);
+const analysis = ref([]);
 const type = ref("view");
 
 const numChange = () => {
-  chat(props.forecast, props.cardInfo, props.ruleInfo, props.userInfo, analysis, loading, num.value);
+  analysis.value = []
+  for(let i=0;i<num.value;i++){
+    analysis.value.push({
+      title: "",
+      detail: "",
+      result: "",
+    })
+  }
+  loading.value = true
+  nextTick(()=>{
+    try {
+    chat(props.forecast, props.cardInfo, props.ruleInfo, props.userInfo, analysis, loading, num.value);
+    }catch(e){
+      ElNotification({
+        title: '异常',
+        message: "方案生成中发生未知错误",
+        position: 'top-left',
+        type: 'error'
+      })
+    }
+  })
 };
 const typeChange = (val) => {
   chartDraw(val, false, props.user);

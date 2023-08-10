@@ -2,7 +2,7 @@ import actType from '@/utils/js/echartsConfig/Enum/actType'
 
 function formatter(data) {
     let map = new Map();
-    let types = ['view', 'cart', 'fan', 'buy', 'complain', 'comment', 'consult']
+    let types = ['view', 'buy', 'fan', 'comment', 'cart', 'consult','complain']
     data.forEach(e => {
 
         types.forEach((type, idx) => {
@@ -138,15 +138,15 @@ export function setLoudouConfig(data) {
             symbolSize: ['43.5%', 60],
             z: 1,
 
-            symbolOffset: ['80%', 30],
+            symbolOffset: ['110%', 30],
             label: {
                 show: true,
                 position: 'right',
-                offset: [15, 12],
+                offset: [15, 32],
                 align: 'center',
                 backgroundColor: 'rgba(249,249,249,1)',
                 width: 100,
-                height: 30,
+                height: 60,
                 distance: 5,
                 fontStyle: 'Microsoft YaHei',
                 formatter: function (d) {

@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-06-28 20:27:15
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-09 17:45:07
+ * @LastEditTime: 2023-08-09 20:08:16
  * @FilePath: \vue-web\src\components\echarts\basePersonal\loudou.vue
  * @Description: 
  * 
@@ -35,7 +35,7 @@ const props = defineProps({
     },
     height: {
         type: String,
-        default: "350px"
+        default: "400px"
     },
     date: {
         type: Array
@@ -45,6 +45,10 @@ const props = defineProps({
     },
     id: {
         type: String
+    },
+    group:{
+        type:String,
+        default:null
     }
 })
 
@@ -60,20 +64,28 @@ const chartDraw = () => {
     nextTick(() => {
         var chartDom = document.getElementById(props.id);
         var myChart = echarts.init(chartDom);
-        myChart.showLoading({
-            text: '正在加载...',
-            color: '#4cbbff',
-            textColor: '#4cbbff',
-            maskColor: 'rgba(0, 0, 0, 0.39)'
-        })
-        get({
+        let config = !props.group?{
             url: '/user-daily-act/getAllByDate',
             params: {
                 start: formatDateTime(props.date[0], 'yyyy-MM-dd'),
                 end: formatDateTime(props.date[1], 'yyyy-MM-dd'),
                 user: props.user
             }
-        }).then(res => {
+        }:{
+            url: '/user-daily-act/getAllByGroup',
+            params: {
+                start: formatDateTime(props.date[0], 'yyyy-MM-dd'),
+                end: formatDateTime(props.date[1], 'yyyy-MM-dd'),
+                group: props.group
+            }
+        }
+        myChart.showLoading({
+            text: '正在加载...',
+            color: '#4cbbff',
+            textColor: '#4cbbff',
+            maskColor: 'rgba(0, 0, 0, 0.39)'
+        })
+        get(config).then(res => {
             if (res.length == 0) {
                 show.value = true
             } else {

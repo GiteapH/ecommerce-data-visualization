@@ -33,11 +33,11 @@ const emit = defineEmits(['change', 'complete', 'loadMapData'])
 const title = ref('全国')
 const ctx = getCurrentInstance()
 let myChart
-let currentOption,barOption,option
+let currentOption, barOption, option
 var alladcode
 
 onMounted(() => {
-    
+
     myChart = echarts.init(document.getElementById("map"));
     //各省份的地图json文件
     loadMap('100000', '全国', myChart) //初始化全国地图
@@ -80,7 +80,7 @@ onMounted(() => {
     });
 })
 
-const swag = ()=>{
+const swag = () => {
     currentOption = currentOption === option ? barOption : option;
     myChart.setOption(currentOption, true);
 }
