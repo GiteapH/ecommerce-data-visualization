@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-09 15:32:57
+ * @LastEditTime: 2023-08-10 13:15:20
  * @FilePath: \vue-web\src\views\picture\groupPic.vue
  * @Description: 
  * 
@@ -23,7 +23,7 @@
             <el-form-item label="rfm群体">
               <rfmSelect @change="rfmChange" :value="rfm" style="margin-bottom: 15px" />
             </el-form-item>
-            <el-form-item label="用户报告">
+            <el-form-item label="用户群报告">
               <input type="file" id="module" accept=".docx" style="margin-bottom: 15px" @change="docxChange" />
               <el-button text bg type="primary" @click="docxUpload" style="margin-bottom: 15px">上传模板word生成报告</el-button>
             </el-form-item>

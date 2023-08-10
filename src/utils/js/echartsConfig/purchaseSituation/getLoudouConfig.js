@@ -4,6 +4,19 @@ import {
 } from '@/utils/axiosConfig/axios'
 
 import actType from '@/utils/js/echartsConfig/Enum/actType'
+import * as echarts from 'echarts'
+function getColor(type) {
+    var colors = {
+        1: ["rgba(29,211,137,0.8)", "rgba(29,211,137,0)"],
+        2: ["rgba(102,142,255,0.7)", "rgba(102,142,255,0)"],
+        3: ["rgba(255,198,82,0.6)", "rgba(255,198,82,0)"],
+        4: ["rgba(255,110,115,0.5)", "rgba(255,110,115,0)"],
+        5: ["#8a88f180", "rgba(255,110,115,0)"],
+        6: ["#9855ce80", "rgba(255,110,115,0)"],
+        7: ["#e95a9d80", "rgba(255,110,115,0)"],
+    }
+    return colors[type]
+}
 
 export function setgetLoudouConfig(address) {
     // 根据params，请求获取渲染图标的数据，静态数据调试把他注释了
@@ -32,6 +45,7 @@ export function setgetLoudouConfig(address) {
                 values.push({
                     value: info.counts,
                     name: actType[`${info.actType}`].name,
+                    type:info.actType,
                     itemStyle: {
                         normal: {
                             height: '68px'
@@ -116,7 +130,19 @@ export function setgetLoudouConfig(address) {
                         color: 'transparent',
                         borderWidth: 0,
                     },
-                    data: values
+                    data:  values.map(e=>{
+                        e.itemStyle = {
+                            normal: {
+                                height: '68px',
+                                borderWidth: 0,
+                                opacity: 1,
+                                color:  getColor(e.type)[0],
+                            },
+                            
+                        }
+
+                        return e
+                    })
                 }, {
                     type: 'pictorialBar',
                     symbol: 'image://./img/drawio.png',
