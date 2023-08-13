@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-10 13:15:20
+ * @LastEditTime: 2023-08-11 14:57:44
  * @FilePath: \vue-web\src\views\picture\groupPic.vue
  * @Description: 
  * 
@@ -24,13 +24,17 @@
               <rfmSelect @change="rfmChange" :value="rfm" style="margin-bottom: 15px" />
             </el-form-item>
             <el-form-item label="用户群报告">
-              <input type="file" id="module" accept=".docx" style="margin-bottom: 15px" @change="docxChange" />
-              <el-button text bg type="primary" @click="docxUpload" style="margin-bottom: 15px">上传模板word生成报告</el-button>
+              <el-badge is-dot>
+                <input type="file" id="module" accept=".docx" style="margin-bottom: 15px" @change="docxChange" />
+                <el-button text bg type="primary" @click="docxUpload" style="margin-bottom: 15px">上传模板word生成报告</el-button>
+              </el-badge>
             </el-form-item>
             <el-form-item label="用户群体营销策略">
-              <el-button text bg type="primary" @click="analysisVisible = true" style="margin-bottom: 15px">
-                用户群体营销策略
-              </el-button>
+              <el-badge is-dot>
+                <el-button text bg type="primary" @click="analysisVisible = true" style="margin-bottom: 15px">
+                  用户群体营销策略
+                </el-button>
+              </el-badge>
               <el-dialog v-model="analysisVisible" title="用户群体营销策略" width="50%" center>
                 <groupAnalysis ref="groupAnalysisRef" :group="rfm" :cardInfo="cardInfo" :forecast="forecastGPT">
                 </groupAnalysis>

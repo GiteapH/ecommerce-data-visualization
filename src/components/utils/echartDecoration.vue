@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-07-03 16:02:23
+ * @LastEditTime: 2023-08-11 17:18:57
  * @FilePath: \vue-web\src\components\utils\echartDecoration.vue
  * @Description: 
  * 
@@ -12,9 +12,14 @@
     <div class="echart_box">
         <el-row justify="space-between">
             <el-col :span="15">
-                <p class="title">
+                <p class="title" v-if="!update">
                     {{ title }}
                 </p>
+                <el-badge is-dot v-else>
+                    <p class="title">
+                        {{ title }}
+                    </p>
+                </el-badge>
             </el-col>
             <el-col :span="7">
                 <slot name="interactive"></slot>
@@ -51,13 +56,19 @@ const props = defineProps({
     title: {
         type: String,
         default: "______"
+    },
+    update:{
+        type:Boolean,
+        default:false
     }
 })
 
 
 
 watch(() => props.title, (val, preVal) => {
-    
+    new Promise(()=>{
+
+    })
 })
 
 onMounted(()=>{

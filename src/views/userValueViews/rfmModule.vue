@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-07 20:11:41
+ * @LastEditTime: 2023-08-13 13:58:03
  * @FilePath: \vue-web\src\views\userValueViews\rfmModule.vue
  * @Description: 
  * 
@@ -11,12 +11,22 @@
 <template>
     <Layout>
         <template #content>
-            <el-select @change="timeChange" v-model="time" style="margin-bottom: 15px;">
-                <el-option label="基于全部日期的模型" value="1">
-                </el-option>
-                <el-option label="基于最近一月的模型" value="2">
-                </el-option>
-            </el-select>
+            <el-form :inline="true">
+                <el-form-item label="基于的rfm模型时间">
+                    <el-select @change="timeChange" v-model="time">
+                        <el-option label="基于全部日期的模型" value="1">
+                        </el-option>
+                        <el-option label="基于最近一月的模型" value="2">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="近月指标变化查询">
+                    <el-badge is-dot>
+                        <score-change></score-change>
+                    </el-badge>
+                </el-form-item>
+            </el-form>
+            
             <el-row>
                 <el-col :span="8">
                     <Map height="640px" @change="mapChange" @complete="mapComplete" @loadMapData="loadMapData"></Map>
@@ -41,7 +51,7 @@
             </el-row>
             <el-row>
                 <el-col :span="24">
-                    <rfmSlider height="500px" ref="rfmSliderRef"></rfmSlider>
+                        <rfmSlider height="500px" ref="rfmSliderRef"></rfmSlider>
                 </el-col>
             </el-row>
             <el-row>

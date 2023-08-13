@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-05-30 15:38:41
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-05 19:28:32
+ * @LastEditTime: 2023-08-11 15:04:28
  * @FilePath: \vue-web\src\views\streamingData.vue
  * @Description: 
  * 
@@ -11,6 +11,9 @@
 <template>
   <Layout>
     <template #content>
+      <el-badge is-dot>
+      <h1>增量数据</h1>
+      </el-badge>
       <el-descriptions title="当前更新信息" :column="3" border>
         <el-descriptions-item
           v-for="item in streamingInfo"

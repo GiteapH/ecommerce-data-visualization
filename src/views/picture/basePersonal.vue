@@ -2,7 +2,7 @@
  * @Author: GiteapH 1046664571@qq.com
  * @Date: 2023-06-19 13:58:39
  * @LastEditors: GiteapH 1046664571@qq.com
- * @LastEditTime: 2023-08-08 15:00:51
+ * @LastEditTime: 2023-08-13 12:42:30
  * @FilePath: \vue-web\src\views\picture\basePersonal.vue
  * @Description: 
  * 
@@ -457,15 +457,17 @@
               >
             </el-form-item>
             <el-form-item label="用户营销策略">
-              <el-button
-                text
-                bg
-                type="primary"
-                @click="analysisVisible = true"
-                style="margin-bottom: 15px"
-              >
+              <el-badge is-dot>
+                <el-button
+                  text
+                  bg
+                  type="primary"
+                  @click="analysisVisible = true"
+                  style="margin-bottom: 15px"
+                >
                 用户营销策略
               </el-button>
+              </el-badge>
               <el-dialog
                 v-model="analysisVisible"
                 title="用户营销策略"
@@ -1777,6 +1779,7 @@ const clvInfoCardsRef = ref();
 const timePeriedRef = ref();
 const cenRef = ref();
 const funnelRef = ref();
+
 const rfmRef = ref();
 const model = ref("1");
 const time_window = ref(1);
